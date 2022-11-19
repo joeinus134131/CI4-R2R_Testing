@@ -15,4 +15,16 @@ class Dashboard extends BaseController
         echo view('dashboard');
         echo view('layouts/footer');
     }
+
+    public function kontak()
+    {
+        $data = [
+            'title' => 'Kontak'
+        ];
+        echo view('layouts/header', $data);
+        echo view('layouts/top_menu');
+        echo view('layouts/side_menu');
+        echo view('pages/kontak');
+        echo view('layouts/footer');
+    }
 }
