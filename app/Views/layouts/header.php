@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="<?= base_url('adminLTE/plugins/fontawesome-free/css/all.min.css') ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('adminLTE/dist/css/adminlte.min.css') ?>">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?= base_url('asset/css/style.css') ?>">
 </head>
 
 <body class="hold-transition sidebar-mini">
