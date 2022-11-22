@@ -37,7 +37,10 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Dashboard::index');
 $routes->get('/kontak', 'Dashboard::kontak');
-$routes->get('/rules', 'Dashboard::rules');
+$routes->get('/plugin/rules', 'Configplugin::rules');
+$routes->get('/plugin/aidecision', 'Configplugin::aidecision');
+$routes->get('/deletedata', 'DashboardModel::delete');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

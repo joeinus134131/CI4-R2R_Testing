@@ -209,13 +209,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/rules" class="nav-link">
+                            <a href="/plugin/rules" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Simple Rules Condition</p>
+                                <p>Simple Rules Decision</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/plugin/aidecision" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 Simple AI Decision
                             </a>

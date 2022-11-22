@@ -2,39 +2,30 @@
 
 namespace App\Controllers;
 
-class Dashboard extends BaseController
+class Configplugin extends BaseController
 {
-    public function index()
+
+    public function rules()
     {
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Rules Setting'
         ];
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
         echo view('layouts/side_menu');
-        echo view('dashboard');
+        echo view('pages/rules', $data);
         echo view('layouts/footer');
     }
 
-    public function kontak()
+    public function aidecision()
     {
         $data = [
-            'title' => 'Kontak'
+            'title' => 'Ai Decision'
         ];
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
         echo view('layouts/side_menu');
-        echo view('pages/kontak');
+        echo view('pages/aidecision', $data);
         echo view('layouts/footer');
-    }
-    public function create()
-    {
-        
-    }
-
-    public function delete($id_flow)
-    {
-        $this->DashboardModel->delete($id_flow);
-        return redirect()->to('/');
     }
 }

@@ -16,14 +16,13 @@
               </div>
           </div><!-- /.container-fluid -->
       </section>
-
       <!-- Main content -->
       <section class="content">
 
           <!-- Default box -->
           <div class="card">
               <div class="card-header">
-                  <h3 class="card-title">Simple Rules Plugin Configuration</h3>
+                  <h3 class="card-title">Simple AI Decision Plugin Configuration</h3>
 
                   <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -73,6 +72,4 @@
           <!-- /.card -->
 
       </section>
-      <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
