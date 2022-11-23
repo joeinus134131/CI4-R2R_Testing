@@ -29,12 +29,11 @@ class Dashboard extends BaseController
     }
     public function create()
     {
-        
     }
 
-    public function delete($id_flow)
+    public function delete($data)
     {
-        $this->DashboardModel->delete($id_flow);
+        $this->DashboardModel->deletefield($data);
         return redirect()->to('/');
     }
 }

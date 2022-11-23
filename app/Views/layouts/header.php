@@ -23,5 +23,13 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <div class="preloader">
+        <div class="loading">
+            <img src="<?= base_url('adminlte/dist/img/loading.gif') ?>" width="88">
+            <div>
+                <p>Harap Tunggu...</p>
+            </div>
+        </div>
+    </div>
     <!-- Site wrapper -->
     <div class="wrapper">

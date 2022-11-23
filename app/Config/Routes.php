@@ -39,8 +39,8 @@ $routes->get('/', 'Dashboard::index');
 $routes->get('/kontak', 'Dashboard::kontak');
 $routes->get('/plugin/rules', 'Configplugin::rules');
 $routes->get('/plugin/aidecision', 'Configplugin::aidecision');
-$routes->get('/deletedata', 'DashboardModel::delete');
-
+$routes->get('/delete', 'Dashboard::delete');
+$routes->get('/consol/jurnal', 'Consolidation::consol');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -1,6 +1,6 @@
 <?php
 $db = \Config\Database::connect();
-$query = $db->query('SELECT * FROM interco');
+$query = $db->query('SELECT * FROM tb_parent');
 // $result = $query->getResult();
 // echo ($result);
 ?>
@@ -12,12 +12,12 @@ $query = $db->query('SELECT * FROM interco');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>R2R Finance Management</h1>
+                    <h1>Consolidation</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active">Consolidation</li>
                     </ol>
                 </div>
             </div>
@@ -56,16 +56,20 @@ $query = $db->query('SELECT * FROM interco');
                                                 <div class="modal-body">
                                                     <form>
                                                         <div class="form-group">
-                                                            <label for="exampleFormControlInput1">ID Flow</label>
-                                                            <input type="text" class="form-control" name="id_flow">
+                                                            <label for="exampleFormControlInput1">Account number</label>
+                                                            <input type="text" class="form-control" name="id_account">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleFormControlTextarea1">Flow Name</label>
-                                                            <input type="text" class="form-control" name="flow_name">
+                                                            <label for="exampleFormControlTextarea1">Company Code</label>
+                                                            <input type="text" class="form-control" name="code_company">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleFormControlInput1">Status</label>
-                                                            <input type="text" class="form-control" name="status">
+                                                            <label for="exampleFormControlInput1">PNL Item</label>
+                                                            <input type="text" class="form-control" name="pnl_item">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleFormControlInput1">Total Parent</label>
+                                                            <input type="text" class="form-control" name="total_parent">
                                                         </div>
                                                         <form action="" method="POST" enctype="multipart/form-data">
                                                             <h2>Upload Files</h2>
@@ -120,10 +124,11 @@ $query = $db->query('SELECT * FROM interco');
                                     <thead style="background-color: #3F3192; color: white;">
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Flow</th>
-                                            <th>Flow Name</th>
-                                            <th>Status</th>
-                                            <th>Create at</th>
+                                            <th>Account Number</th>
+                                            <th>Company Code</th>
+                                            <th>PNL Item</th>
+                                            <th>Total Parent</th>
+                                            <th>Created at</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -134,19 +139,20 @@ $query = $db->query('SELECT * FROM interco');
                                         ?>
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
-                                                <td><?php echo $row->id_flow; ?></td>
-                                                <td><?php echo $row->flow_name; ?></td>
-                                                <td><?php echo $row->status; ?></td>
-                                                <td><?php echo $row->create_at; ?></td>
+                                                <td><?php echo $row->id_account; ?></td>
+                                                <td><?php echo $row->code_company; ?></td>
+                                                <td><?php echo $row->pnl_item; ?></td>
+                                                <td><?php echo $row->total_parent; ?></td>
+                                                <td><?php echo $row->created_at; ?></td>
                                                 <td>
-                                                    <button class="btn" id="btn" data-toggle="modal" data-target="#modal<?php echo $row->id_flow; ?>">
+                                                    <button class="btn" id="btn" data-toggle="modal" data-target="#modal<?php echo $row->id_account; ?>">
                                                         Configure
                                                     </button>
                                                     <?php
                                                     $db = \Config\Database::connect();
-                                                    $query = $db->query("SELECT * FROM interco WHERE id_flow = '$row->id_flow'");
+                                                    $query = $db->query("SELECT * FROM tb_parent WHERE id_account = '$row->id_account'");
                                                     ?>
-                                                    <div class="modal fade" id="modal<?php echo $row->id_flow; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="modal<?php echo $row->id_account; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header" style="background-color: #3F3192; color: white;">
@@ -158,8 +164,8 @@ $query = $db->query('SELECT * FROM interco');
                                                                     <!-- Small button groups (default and split) -->
                                                                     <form>
                                                                         <div class="form-group">
-                                                                            <label for="exampleFormControlInput1">Flow Name</label>
-                                                                            <input type="text" class="form-control" value="<?php echo $row->flow_name; ?>">
+                                                                            <label for="exampleFormControlInput1">Code Number</label>
+                                                                            <input type="text" class="form-control" value="<?php echo $row->code_company; ?>">
                                                                         </div>
                                                                         <!-- Date dd/mm/yyyy -->
                                                                         <!-- <div class="form-group">
@@ -174,8 +180,12 @@ $query = $db->query('SELECT * FROM interco');
                                                                                 /.input group
                                                                             </div> -->
                                                                         <div class="form-group">
-                                                                            <label for="exampleFormControlInput1">Status</label>
-                                                                            <input type="text" class="form-control" value="<?php echo $row->status; ?>">
+                                                                            <label for="exampleFormControlInput1">PNL Item</label>
+                                                                            <input type="text" class="form-control" value="<?php echo $row->pnl_item; ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleFormControlInput1">Total Parent</label>
+                                                                            <input type="text" class="form-control" value="<?php echo $row->total_parent; ?>">
                                                                         </div>
                                                                         <div class="btn-group" style="color: #3F3192;">
                                                                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -203,7 +213,7 @@ $query = $db->query('SELECT * FROM interco');
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <?php $data = $row->id_flow; ?>
+                                                        <?php $data = $row->id_account; ?>
                                                         <a href=" /delete" class=" btn" id="btn">Delete</a>
                                                 </td>
                                             </tr>
