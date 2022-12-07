@@ -38,6 +38,7 @@ $query = $db->query('SELECT * FROM interco');
                                 <div class="cara-header">
                                     <!-- Tambah data -->
                                     <button class="btn" id="btn" data-toggle="modal" data-target="#myModal">
+                                        <i class="nav-icon fa fa-plus-square"></i>
                                         Tambah Data
                                     </button>
 
@@ -55,31 +56,40 @@ $query = $db->query('SELECT * FROM interco');
                                                 </div>
                                                 <div class="modal-body">
                                                     <form>
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlInput1">ID Flow</label>
-                                                            <input type="text" class="form-control" name="id_flow">
+                                                        <div class="card-body">
+                                                            <div class="form-group">
+                                                                <label for="exampleFormControlInput1">ID Flow</label>
+                                                                <input type="text" class="form-control" name="id_flow">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="exampleFormControlTextarea1">Flow Name</label>
+                                                                <input type="text" class="form-control" name="flow_name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="exampleFormControlInput1">Status</label>
+                                                                <input type="text" class="form-control" name="status">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="exampleInputFile">File input</label>
+                                                                <div class="input-group">
+                                                                    <div class="custom-file">
+                                                                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                                                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                                    </div>
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">Upload</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                                            </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlTextarea1">Flow Name</label>
-                                                            <input type="text" class="form-control" name="flow_name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlInput1">Status</label>
-                                                            <input type="text" class="form-control" name="status">
-                                                        </div>
-                                                        <form action="" method="POST" enctype="multipart/form-data">
-                                                            <h2>Upload Files</h2>
-                                                            <p>
-                                                                Select files to upload:
-                                                                <!-- name of the input fields are going to be used in our php script-->
-                                                                <input type="file" name="files[]" multiple>
-                                                                <br><br>
-                                                                <!-- <input type="submit" name="submit" value="Upload"> -->
-                                                            </p>
-                                                        </form>
+                                                        <!-- /.card-body -->
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn" id="btn" name="Submit" value="submit">Save
+                                                            <button type="submit" class="btn" id="btn" name="Submit">Save
                                                             </button>
                                                         </div>
                                                     </form>
@@ -113,56 +123,55 @@ $query = $db->query('SELECT * FROM interco');
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead style="background-color: #3F3192; color: white;">
-                                        <tr>
-                                            <th>No</th>
-                                            <th>ID Flow</th>
-                                            <th>Flow Name</th>
-                                            <th>Status</th>
-                                            <th>Create at</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php
-                                        foreach ($query->getResult() as $row) {
-                                        ?>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="datatable1" class="table table-bordered table-striped">
+                                        <thead style="background-color: #3F3192; color: white;">
                                             <tr>
-                                                <td><?php echo $i++; ?></td>
-                                                <td><?php echo $row->id_flow; ?></td>
-                                                <td><?php echo $row->flow_name; ?></td>
-                                                <td><?php echo $row->status; ?></td>
-                                                <td><?php echo $row->create_at; ?></td>
-                                                <td>
-                                                    <button class="btn" id="btn" data-toggle="modal" data-target="#modal<?php echo $row->id_flow; ?>">
-                                                        Configure
-                                                    </button>
-                                                    <?php
-                                                    $db = \Config\Database::connect();
-                                                    $query = $db->query("SELECT * FROM interco WHERE id_flow = '$row->id_flow'");
-                                                    ?>
-                                                    <div class="modal fade" id="modal<?php echo $row->id_flow; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header" style="background-color: #3F3192; color: white;">
-                                                                    <h4 class="modal-title" id="myModalLabel">Edit Process</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                </div>
-                                                                <!-- isi form popup -->
-                                                                <div class="modal-body">
-                                                                    <!-- Small button groups (default and split) -->
-                                                                    <form>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleFormControlInput1">Flow Name</label>
-                                                                            <input type="text" class="form-control" value="<?php echo $row->flow_name; ?>">
-                                                                        </div>
-                                                                        <!-- Date dd/mm/yyyy -->
-                                                                        <!-- <div class="form-group">
+                                                <th>No</th>
+                                                <th>ID Flow</th>
+                                                <th>Flow Name</th>
+                                                <th>Status</th>
+                                                <th>Create at</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1; ?>
+                                            <?php
+                                            foreach ($query->getResult() as $row) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $i++; ?></td>
+                                                    <td><?php echo $row->id_flow; ?></td>
+                                                    <td><?php echo $row->flow_name; ?></td>
+                                                    <td><?php echo $row->status; ?></td>
+                                                    <td><?php echo $row->create_at; ?></td>
+                                                    <td>
+                                                        <button class="btn" id="btn" data-toggle="modal" data-target="#modal<?php echo $row->id_flow; ?>">
+                                                            <i class="nav-icon fa fa-cog"></i>
+                                                        </button>
+                                                        <?php
+                                                        $db = \Config\Database::connect();
+                                                        $query = $db->query("SELECT * FROM interco WHERE id_flow = '$row->id_flow'");
+                                                        ?>
+                                                        <div class="modal fade" id="modal<?php echo $row->id_flow; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header" style="background-color: #3F3192; color: white;">
+                                                                        <h4 class="modal-title" id="myModalLabel">Edit Process</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    </div>
+                                                                    <!-- isi form popup -->
+                                                                    <div class="modal-body">
+                                                                        <!-- Small button groups (default and split) -->
+                                                                        <form>
+                                                                            <div class="form-group">
+                                                                                <label for="exampleFormControlInput1">Flow Name</label>
+                                                                                <input type="text" class="form-control" value="<?php echo $row->flow_name; ?>">
+                                                                            </div>
+                                                                            <!-- Date dd/mm/yyyy -->
+                                                                            <!-- <div class="form-group">
                                                                                 <label>Date masks:</label>
 
                                                                                 <div class="input-group">
@@ -173,54 +182,46 @@ $query = $db->query('SELECT * FROM interco');
                                                                                 </div>
                                                                                 /.input group
                                                                             </div> -->
-                                                                        <div class="form-group">
-                                                                            <label for="exampleFormControlInput1">Status</label>
-                                                                            <input type="text" class="form-control" value="<?php echo $row->status; ?>">
-                                                                        </div>
-                                                                        <div class="btn-group" style="color: #3F3192;">
-                                                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                Plugin Choice
-                                                                            </button>
-                                                                            <div class="dropdown-menu">
-                                                                                <button class="dropdown-item" type="button" value="rules">Simple Rules Decision</button>
-                                                                                <button class="dropdown-item" type="button" value="ai">Simple AI Decision</button>
-                                                                                <script>
-                                                                                    $(document).ready(function() {
-                                                                                        $(".dropdown-item").click(function() {
-                                                                                            var value = $(this).val();
-                                                                                            alert("Hello World");
-                                                                                        });
-                                                                                    });
-                                                                                </script>
+                                                                            <div class="form-group">
+                                                                                <label for="exampleFormControlInput1">Status</label>
+                                                                                <input type="text" class="form-control" value="<?php echo $row->status; ?>">
                                                                             </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn" id="btn"">Save</button>
+                                                                            <div class="btn-group" style="color: #3F3192;">
+                                                                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                    Plugin Choice
+                                                                                </button>
+                                                                                <div class="dropdown-menu">
+                                                                                    <button class="dropdown-item" type="button" value="rules">Simple Rules Decision</button>
+                                                                                    <button class="dropdown-item" type="button" value="ai">Simple AI Decision</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn" id="btn">Save</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <?php $data = $row->id_flow; ?>
-                                                        <a href=" /delete" class=" btn" id="btn">Delete</a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                        <?php ?>
-                                    </tbody>
-                                </table>
+                                                        <a href=" /delete" class=" btn" id="btn"><i class="nav-icon fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                            <?php ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
+                            <!-- /.card -->
                         </div>
-                        <!-- /.card -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
+                    <!-- /.row -->
                 </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
+                <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
 

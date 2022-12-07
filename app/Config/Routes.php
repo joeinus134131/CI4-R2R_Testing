@@ -21,6 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
+$routes->setAutoRoute(true);
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -41,6 +42,15 @@ $routes->get('/plugin/rules', 'Configplugin::rules');
 $routes->get('/plugin/aidecision', 'Configplugin::aidecision');
 $routes->get('/delete', 'Dashboard::delete');
 $routes->get('/consol/jurnal', 'Consolidation::consol');
+$routes->get('/calender', 'Dashboard::calender');
+$routes->get('/performance/company', 'Performance::company');
+$routes->get('/performance/agent', 'Performance::agent');
+$routes->get('/pdf/attachment-1', 'Anotate::anotated');
+$routes->get('/pdf/attachment-2', 'Anotate::Attachment');
+$routes->match(['get', 'post'], '/pdf/attachment/delete', 'Anotate::delete');
+$routes->match(['get', 'post'], '/pdf/attachment/save', 'Anotate::save');
+$routes->match(['get', 'post'], '/pdf/attachment/upload', 'Anotate::upload');
+$routes->match(['get', 'post'], '/pdf/attachment/download', 'Anotate::download');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

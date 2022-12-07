@@ -12,12 +12,12 @@ $query = $db->query('SELECT * FROM interco');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>R2R Finance Management</h1>
+                    <h1>Simple Rules Plugin Setting</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Consolidation</li>
+                        <li class="breadcrumb-item active">Rules</li>
                     </ol>
                 </div>
             </div>
@@ -36,7 +36,9 @@ $query = $db->query('SELECT * FROM interco');
                             <!-- Default box -->
                             <div class="card">
                                 <div class="card-header">
+                                    <!-- Tambah data -->
                                     <button class="btn" id="btn" data-toggle="modal" data-target="#myModal">
+                                        <i class="nav-icon fa fa-plus-square"></i>
                                         Tambah Data
                                     </button>
 
@@ -113,102 +115,80 @@ $query = $db->query('SELECT * FROM interco');
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead style="background-color: #3F3192; color: white;">
-                                            <tr>
-                                                <th>No</th>
-                                                <th>ID Flow</th>
-                                                <th>Flow Name</th>
-                                                <th>Status</th>
-                                                <th>Create at</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $i = 1; ?>
-                                            <?php
-                                            foreach ($query->getResult() as $row) {
-                                            ?>
-                                                <tr>
-                                                    <td><?php echo $i++; ?></td>
-                                                    <td><?php echo $row->id_flow; ?></td>
-                                                    <td><?php echo $row->flow_name; ?></td>
-                                                    <td><?php echo $row->status; ?></td>
-                                                    <td><?php echo $row->create_at; ?></td>
-                                                    <td>
-                                                        <button class="btn" id="btn" data-toggle="modal" data-target="#modal<?php echo $row->id_flow; ?>">
-                                                            Configure
-                                                        </button>
-                                                        <?php
-                                                        $db = \Config\Database::connect();
-                                                        $query = $db->query("SELECT * FROM interco WHERE id_flow = '$row->id_flow'");
-                                                        ?>
-                                                        <div class="modal fade" id="modal<?php echo $row->id_flow; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header" style="background-color: #3F3192; color: white;">
-                                                                        <h4 class="modal-title" id="myModalLabel">Edit Process</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                    </div>
-                                                                    <!-- isi form popup -->
-                                                                    <div class="modal-body">
-                                                                        <!-- Small button groups (default and split) -->
-                                                                        <form>
-                                                                            <div class="form-group">
-                                                                                <label for="exampleFormControlInput1">Flow Name</label>
-                                                                                <input type="text" class="form-control" value="<?php echo $row->flow_name; ?>">
-                                                                            </div>
-                                                                            <!-- Date dd/mm/yyyy -->
-                                                                            <!-- <div class="form-group">
-                                                                                <label>Date masks:</label>
-
-                                                                                <div class="input-group">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                                                                    </div>
-                                                                                    <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
-                                                                                </div>
-                                                                                /.input group
-                                                                            </div> -->
-                                                                            <div class="form-group">
-                                                                                <label for="exampleFormControlInput1">Status</label>
-                                                                                <input type="text" class="form-control" value="<?php echo $row->status; ?>">
-                                                                            </div>
-                                                                            <div class="btn-group" style="color: #3F3192;">
-                                                                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                    Plugin Choice
-                                                                                </button>
-                                                                                <div class="dropdown-menu">
-                                                                                    <button class="dropdown-item" type="button" value="rules">Simple Rules Decision</button>
-                                                                                    <button class="dropdown-item" type="button" value="ai">Simple AI Decision</button>
-                                                                                    <script>
-                                                                                        $(document).ready(function() {
-                                                                                            $(".dropdown-item").click(function() {
-                                                                                                var value = $(this).val();
-                                                                                                alert("Hello World");
-                                                                                            });
-                                                                                        });
-                                                                                    </script>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                        <button type="button" class="btn" id="btn"">Save</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href=" /deletedata" class=" btn" id="btn">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>
-                                            <?php ?>
-                                        </tbody>
-                                    </table>
+                                    <div class="row">
+                                        <label>IF</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <label>Parameter 1</label>
+                                                <select class="form-control">
+                                                    <option>option 1</option>
+                                                    <option>option 2</option>
+                                                    <option>option 3</option>
+                                                    <option>option 4</option>
+                                                    <option>option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Parameter 1</label>
+                                                <select class="form-control">
+                                                    <option>option 1</option>
+                                                    <option>option 2</option>
+                                                    <option>option 3</option>
+                                                    <option>option 4</option>
+                                                    <option>option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="form-group">
+                                                <label>Parameter 1</label>
+                                                <select class="form-control">
+                                                    <option>option 1</option>
+                                                    <option>option 2</option>
+                                                    <option>option 3</option>
+                                                    <option>option 4</option>
+                                                    <option>option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label>ELSE THEN</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <label>Parameter 1</label>
+                                                <select class="form-control">
+                                                    <option>option 1</option>
+                                                    <option>option 2</option>
+                                                    <option>option 3</option>
+                                                    <option>option 4</option>
+                                                    <option>option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Parameter 1</label>
+                                                <select class="form-control">
+                                                    <option>option 1</option>
+                                                    <option>option 2</option>
+                                                    <option>option 3</option>
+                                                    <option>option 4</option>
+                                                    <option>option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
+                                <button href="#" type="submit" class="btn" id="btn">Save
+                                </button>
                             </div>
                             <!-- /.card -->
                         </div>

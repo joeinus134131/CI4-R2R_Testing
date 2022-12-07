@@ -1,0 +1,115 @@
+#btn {
+    background-color: #3F3192;
+    color: #fff;
+}
+
+#card-header {
+    background-color: #3F3192;
+    color: #fff;
+}
+div.dataTables_wrapper {
+    margin: 0 auto;
+}
+
+.modal-header {
+    background-color: #3F3192;
+    color: #fff;
+}
+
+.close {
+    color: #fff;
+}
+
+.thead {
+    background-color: #3F3192; 
+    color: white; 
+    font-size: small;
+    text-align: center;
+}
+
+body {
+    background-color: rgb(82, 86, 89);
+}
+
+canvas, .canvas-container {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.toolbar {
+    width: 100%;
+    background-color: #3F3192;
+    height: 50px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+#pdf-container {
+    margin-top: 10px;
+    padding-left: 10px;
+    text-align: center;
+    overflow-y: scroll;
+    max-height: 600px !important;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.toolbar .tool {
+    display: inline-block;
+    color: #fff;
+    height: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-right: 5px;
+}
+
+.toolbar .tool label,
+.toolbar .tool select,
+.toolbar .tool input {
+    display: inline-block;
+    width: auto;
+    height: auto !important;
+    padding: 0;
+
+}
+
+.toolbar .tool input {
+    width: 50px;
+}
+
+.toolbar .tool .color-tool {
+    height: 25px;
+    width: 25px;
+    border-radius: 25px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.toolbar .tool .color-tool.active {
+    -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 4px 5px 0px rgba(255, 255, 255, 0.75);
+}
+
+.toolbar .tool:nth-last-child(1) {
+    float: right;
+}
+
+.toolbar .tool .tool-button {
+    background-color: #3F3192;
+    border: 1px solid #3F3192;
+    color: white;
+    cursor: pointer;
+}
+
+.toolbar .tool .tool-button:hover,
+.toolbar .tool .tool-button.active {
+    background-color: rgb(82, 86, 89);
+    border-color: rgb(82, 86, 89);
+}

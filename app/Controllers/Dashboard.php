@@ -27,13 +27,25 @@ class Dashboard extends BaseController
         echo view('pages/kontak');
         echo view('layouts/footer');
     }
-    public function create()
+    public function calender()
     {
+        $data = [
+            'title' => 'Kalender'
+        ];
+        echo view('layouts/header', $data);
+        echo view('layouts/top_menu');
+        echo view('layouts/side_menu');
+        echo view('pages/calender');
+        echo view('layouts/footer');
     }
 
-    public function delete($data)
+    public function delete()
     {
-        $this->DashboardModel->deletefield($data);
+        // $data = [
+        //     'id_flow' => $this->request->getVar('id_flow');
+        // ]
+
+        echo view('action/delete');
         return redirect()->to('/');
     }
 }

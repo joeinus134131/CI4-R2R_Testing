@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #3F3192;">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-        <img src="<?= base_url('asset/img/finvue.png') ?>" alt="AdminLTE Logo" class="" style="opacity: .8">
+        <img src="<?= base_url('assets/img/finvue.png') ?>" alt="admin" class="" style="opacity: .8">
         <span class="brand-text font-weight-light">Finvue</span>
     </a>
 
@@ -66,6 +66,30 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                            Document Anotation
+                            <i class="fas fa-angle-left right"></i>
+                            <!-- <span class="badge badge-info right"></span> -->
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/pdf/attachment-1" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>PDF Anoation (jQuery.net)</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/pdf/attachment-2" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>PDF Anotation (PSPDFKit)</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-ellipsis-h"></i>
                         <p>
                             Process Monitoring
@@ -93,13 +117,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
+                            <a href="/pdf/anotate" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Rejected</p>
+                                <p>PDF Anotation</p>
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
                 <!-- Finance Section -->
                 <li class="nav-item">
@@ -161,7 +185,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
+                            <a href="/performance/company" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Company Performance</p>
                             </a>
@@ -169,7 +193,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
+                            <a href="/performance/agent" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Agent Performance</p>
                             </a>
@@ -178,7 +202,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-circle"></i>
+                        <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Plugin Setting
                             <i class="right fas fa-angle-left"></i>
@@ -202,7 +226,7 @@
 
                 <!-- Hari libur nasional -->
                 <li class="nav-item">
-                    <a href="/" class="nav-link">
+                    <a href="/calender" class="nav-link">
                         <i class="nav-icon far fa-calendar-alt"></i>
                         <p>
                             Hari Libur Nasional
@@ -212,7 +236,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/" class="nav-link">
-                        <i class="nav-icon far fa-circle"></i>
+                        <i class="nav-icon fa fa-power-off"></i>
                         <p>
                             Logout
                         </p>

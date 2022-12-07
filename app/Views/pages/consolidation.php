@@ -38,6 +38,7 @@ $query = $db->query('SELECT * FROM tb_parent');
                                 <div class="cara-header">
                                     <!-- Tambah data -->
                                     <button class="btn" id="btn" data-toggle="modal" data-target="#myModal">
+                                        <i class="nav-icon <?= $iconadd; ?>"></i>
                                         Tambah Data
                                     </button>
 
@@ -146,7 +147,7 @@ $query = $db->query('SELECT * FROM tb_parent');
                                                 <td><?php echo $row->created_at; ?></td>
                                                 <td>
                                                     <button class="btn" id="btn" data-toggle="modal" data-target="#modal<?php echo $row->id_account; ?>">
-                                                        Configure
+                                                        <i class="nav-icon <?= $iconset; ?>"></i>
                                                     </button>
                                                     <?php
                                                     $db = \Config\Database::connect();
@@ -214,7 +215,7 @@ $query = $db->query('SELECT * FROM tb_parent');
                                                             </div>
                                                         </div>
                                                         <?php $data = $row->id_account; ?>
-                                                        <a href=" /delete" class=" btn" id="btn">Delete</a>
+                                                        <a href=" /delete" class=" btn" id="btn"><i class="nav-icon <?= $icondel; ?>"></i></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

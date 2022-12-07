@@ -1,0 +1,74 @@
+// $('.btn-save').click(function() {
+    // testing();
+    // const blob = new Blob([arrayBuffer], {
+    //     type: 'application/pdf'
+    // });
+    // const formData = new FormData();
+    // formData.append("file", blob);
+
+    // $.ajax({
+    //     url: "<?= base_url('/uploads'); ?>",
+    //     type: "POST",
+    //     data: formData,
+    //     processData: false,
+    //     contentType: false,
+    //     success: function(data) {
+    //         console.log(data);
+    //     }
+    // });
+    // await fetch("/uploads", {
+    //     method: "POST",
+    //     body: formData
+    // });
+
+    // const arrayBuffer = await instance.exportPDF();
+    // const blob = new Blob([arrayBuffer], {
+    //     type: 'application/pdf'
+    // });
+    // const formData = new FormData();
+    // formData.append("file", blob);
+    // await fetch("/uploads", {
+    //     method: "POST",
+    //     body: formData
+    // });
+
+
+    // $('#btn-save').on('click', function() {
+    //     const arrayBuffer = await instance.exportPDF();
+    //     const blob = new Blob([arrayBuffer], {
+    //         type: 'application/pdf'
+    //     });
+    //     const formData = new FormData();
+    //     formData.append("file", blob);
+    //     await fetch("/upload", {
+    //         method: "POST",
+    //         body: formData
+    //     });
+    //     alert("File saved!");
+    // });
+
+    // get Edit Product
+    // $('.btn-edit').on('click', function() {
+    //     // get data from button edit
+    //     const attach_id = $(this).data('attach_id');
+    //     const document_type = $(this).data('document_type');
+    //     const name = $(this).data('name');
+    //     const note = $(this).data('note');
+    //     // Set data to Form Edit
+    //     $('.attach_id').val(attach_id);
+    //     $('.document_type').val(document_type);
+    //     $('.name').val(name);
+    //     $('.note').val(note).trigger('change');
+    //     // Call Modal Edit
+    //     $('#editModal').modal('show');
+    // });
+
+    // // Delete data
+    // $('.btn-delete').on('click', function() {
+    //     // get data from button edit
+    //     const attach_id = $(this).data('attach_id');
+    //     // Set data to Form Edit
+    //     $('.attachID').val(attach_id);
+    //     // Call Modal Edit
+    //     $('#deleteModal').modal('show');
+    // });
