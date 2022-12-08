@@ -234,6 +234,39 @@ PDFAnnotate.prototype.savePdf = function (fileName) {
 	})
 }
 
+// PDF save to cloud
+PDFAnnotate.prototype.savePdf2cloud = function (fileName) {
+	var inst = this;
+	var doc = new jspdf.jsPDF();
+	if (typeof fileName === 'undefined') {
+		fileName = `${new Date().getTime()}.pdf`;
+	}
+
+	inst.fabricObjects.forEach(function (fabricObj, index) {
+		if (index != 0) {
+			doc.addPage();
+			doc.setPage(index + 1);
+		}
+		doc.addImage(
+			fabricObj.toDataURL({
+				format: 'png'
+			}), 
+			inst.pageImageCompression == "NONE" ? "PNG" : "JPEG", 
+			0, 
+			0,
+			doc.internal.pageSize.getWidth(), 
+			doc.internal.pageSize.getHeight(),
+			`page-${index + 1}`, 
+			["FAST", "MEDIUM", "SLOW"].indexOf(inst.pageImageCompression) >= 0
+			? inst.pageImageCompression
+			: undefined
+		);
+		if (index === inst.fabricObjects.length - 1) {
+			doc.save(fileName);
+		}
+	})
+}
+
 PDFAnnotate.prototype.setBrushSize = function (size) {
 	var inst = this;
 	$.each(inst.fabricObjects, function (index, fabricObj) {

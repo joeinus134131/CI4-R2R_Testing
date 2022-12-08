@@ -1,4 +1,7 @@
-var pdf = new PDFAnnotate("pdf-container", "/uploads/anotasi.pdf", {
+var filename = 'anotasi.pdf';
+
+var fileUrl= "/uploads/" + filename;
+var pdf = new PDFAnnotate("pdf-container", fileUrl, {
   onPageUpdated(page, oldData, newData) {
     console.log(page, oldData, newData);
   },
@@ -60,8 +63,8 @@ function deleteSelectedObject(event) {
 }
 
 function savePDF() {
-    // pdf.savePdf();
-    pdf.savePdf('Anotasi.pdf'); // save with given file name
+    $pdf = pdf.savePdf('Anotasi.pdf');
+    $('#succesModal').modal('show');
 }
 
 function clearPage() {

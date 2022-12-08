@@ -1,7 +1,10 @@
 <?php
+
+use LDAP\Result;
+
 $db = \Config\Database::connect();
-$query = $db->query('SELECT * FROM attachment');
-// $result = $query->getResult();
+$query = $db->query('SELECT * FROM attachment, user_upload');
+$rowquery = $query->getResult();
 // echo ($result);
 ?>
 <style>
@@ -91,9 +94,32 @@ $query = $db->query('SELECT * FROM attachment');
                     </form>
                 </div>
 
+                <!-- succes upload attachment -->
+                <div class="modal fade" id="succesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Save Anotasi</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <h4>Succes</h4>
+
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" name="attach_id" class="attachID">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Data Table -->
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped" style="width:auto;">
+                    <table id="example1" class="table table-bordered table-striped">
                         <thead class="thead">
                             <tr>
                                 <th>No</th>
@@ -110,31 +136,40 @@ $query = $db->query('SELECT * FROM attachment');
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1; ?>
-                            <?php
-                            foreach ($query->getResult() as $row) {
-                            ?>
+                            <?php ?>
+                            <?php if ($query->getResult() > 0) { ?>
+                                <?php $i = 1; ?>
+                                <?php
+                                foreach ($query->getResult() as $row) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $i++; ?></td>
+                                        <td><?php echo $row->document_type; ?></td>
+                                        <td><?php echo $row->name; ?></td>
+                                        <td><?php echo $row->node_name; ?></td>
+                                        <td><?php echo $row->size; ?></td>
+                                        <td><?php echo $row->attach_id; ?></td>
+                                        <td><?php echo $row->version_document; ?></td>
+                                        <td><?php echo $row->note; ?></td>
+                                        <td><?php echo $row->upload_by ?></td>
+                                        <td><?php echo $row->upload_at; ?></td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Button">
+                                                <a class="btn btn-preview" id="btn"><i class="nav-icon fa fa-<?= $iconset; ?>" data-id="<?= $row->attach_id; ?>" data-name="<?= $row->name; ?>"></i></a>
+
+                                                <a href="" class="btn" id="btn"><i class="nav-icon fa fa-download"></i></a>
+                                                <!-- Delete -->
+                                                <a class="btn btn-secondary btn-delete" id="btn-del" data-id="<?= $row->attach_id; ?>"><i class="nav-icon fa fa-trash"></i></a>
+                                            </div>
+                                            <!-- Preview -->
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
                                 <tr>
-                                    <td><?php echo $i++; ?></td>
-                                    <td><?php echo $row->document_type; ?></td>
-                                    <td><?php echo $row->name; ?></td>
-                                    <td><?php echo $row->node_name; ?></td>
-                                    <td><?php echo $row->size; ?></td>
-                                    <td><?php echo $row->attach_id; ?></td>
-                                    <td><?php echo $row->version_document; ?></td>
-                                    <td><?php echo $row->note; ?></td>
-                                    <td><?php echo $row->upload_by; ?></td>
-                                    <td><?php echo $row->upload_at; ?></td>
-                                    <td>
-                                        <!-- Preview Anotasi -->
-                                        <a href="" class="btn" id="btn" data-toggle="modal" data-target="#jqueryModal"><i class="nav-icon fa fa-<?= $iconset; ?>"></i></a>
-                                        <a href="" class="btn" id="btn"><i class="nav-icon fa fa-download"></i></a>
-                                        <!-- Delete -->
-                                        <a href="" data-toggle="modal" data-target="#deleteModal" class="btn" id="btn"><i class="nav-icon fa fa-trash"></i></a>
-                                    </td>
+                                    <td colspan="11" class="text-center">No Data</td>
                                 </tr>
                             <?php } ?>
-                            <?php ?>
                         </tbody>
                     </table>
 
@@ -150,8 +185,13 @@ $query = $db->query('SELECT * FROM attachment');
                                         </button>
                                     </div>
                                     <div class="modal-body">
-
-                                        <h4>Are you sure want to delete this "<?= $row->name; ?>"?</h4>
+                                        <!-- Preview Anotasi -->
+                                        <?php $data = $db->query("SELECT * FROM attachment WHERE attach_id = '$row->attach_id'"); ?>
+                                        <?php $result = $data->getResult(); ?>
+                                        <?php foreach ($result as $baris) { ?>
+                                            <?php $filename = $baris->name ?>
+                                        <?php } ?>
+                                        <h4>Are you sure want to delete this "<?= $filename; ?>"?</h4>
 
                                     </div>
                                     <div class="modal-footer">
@@ -166,6 +206,7 @@ $query = $db->query('SELECT * FROM attachment');
                     <!-- End Modal Delete Product-->
                 </div>
 
+                <!-- Json modal -->
                 <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -181,14 +222,13 @@ $query = $db->query('SELECT * FROM attachment');
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
     <!-- /.content -->
 
     <!-- PDF View Modal -->
-    <div class="modal fade bd-example-modal-lg" id="jqueryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" id="anotateModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -296,8 +336,6 @@ $query = $db->query('SELECT * FROM attachment');
         </div>
     </div>
 </div>
-
-<!-- javascript -->
 <!-- <script type="text/javascript">
     
 </script> -->

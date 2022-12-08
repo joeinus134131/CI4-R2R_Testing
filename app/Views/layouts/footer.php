@@ -6,9 +6,7 @@
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-</aside>
+<aside class="control-sidebar control-sidebar-dark"></aside>
 <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
@@ -73,6 +71,32 @@
 
 <!-- Page specific script -->
 <script type="text/javascript">
+    $('.btn-preview').on('click', function() {
+        // get data from button edit
+        const attach_id = $(this).data('id');
+        const name = $(this).data('name');
+
+
+        // Set data
+        $('.attach_id').val(attach_id);
+        $('.product_name').val(name);
+
+
+        // Call Modal anotasi
+        $('#anotateModal').modal('show');
+    });
+
+    $('.btn-delete').on('click', function() {
+        // get data from button edit
+        const id = $(this).data('id');
+
+        // Set data to Form Edit
+        $('.attachID').val(id);
+
+        // panggil model delete
+        $('#deleteModal').modal('show');
+    });
+
     $('#colorselector').colorselector();
 
     $("#example1").DataTable({
@@ -83,7 +107,7 @@
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
         scrollY: 400,
         scrollX: true,
-    }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#example_wrapper .col-md-12:eq(0)');
 
     // var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
 

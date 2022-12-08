@@ -9,15 +9,16 @@ class Anotate extends BaseController
     public function Attachment()
     {
         $model = new AnotateModel();
-        $data = [
-            'title' => 'Attachment',
-            'iconset' => 'pencil-alt',
-            'icondel' => 'fa fa-trash',
-            'iconadd' => 'fa fa-plus-square',
-            'user_upload'  => $model->getAttachment()->getResult(),
-            'attachment' => $model->getFile()->getResult(),
-        ];
-
+        foreach ($model->getAttachment()->getResult() as $row) {
+            $data = [
+                'title' => 'Attachment',
+                'iconset' => 'pencil-alt',
+                'icondel' => 'fa fa-trash',
+                'iconadd' => 'fa fa-plus-square',
+                'nama'  => $row->nama,
+                'attachment' => $model->getFile()->getResult(),
+            ];
+        }
 
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
@@ -28,13 +29,16 @@ class Anotate extends BaseController
     public function anotated()
     {
         $model = new AnotateModel();
+        $id = $this->request->getVar('attach_id');
+        $username = $model->getAttachment()->getResult();
         $data = [
             'title' => 'Anotate',
+            'user' => 'Admin',
             'iconsave' => 'fa fa-pencil-square-o',
             'iconset' => 'pencil-alt',
             'icondel' => 'fa fa-trash',
             'iconadd' => 'fa fa-plus-square',
-            'user_upload'  => $model->getAttachment()->getResult(),
+            'user_upload'  => $username,
             'attachment' => $model->getFile()->getResult(),
         ];
         echo view('layouts/header', $data);
@@ -46,25 +50,17 @@ class Anotate extends BaseController
 
     public function save()
     {
-
         $model = new AnotateModel();
-        // $data = array(
-        //     'document_type'        => $this->request->getPost('document_type'),
-        //     'name'                 => $this->request->getPost('name'),
-        //     'note'                 => $this->request->getPost('note'),
-        // );
-        // $model->saveFile($data);
         return redirect()->to('/pdf/attachment');
     }
 
-    public function update($data)
+    public function previewPdf($data)
     {
         $model = new AnotateModel();
         $attach_id = $this->request->getPost('attach_id');
         $data = array(
-            'document_type'        => $this->request->getPost('document_type'),
             'name'       => $this->request->getPost('name'),
-            'note' => $this->request->getPost('note'),
+            'document_type' => $this->request->getPost('document_type'),
         );
         $model->updateFile($data, $attach_id);
         return redirect()->to('/pdf/attachment');
@@ -75,13 +71,8 @@ class Anotate extends BaseController
         $model = new AnotateModel();
         $attach_id = $this->request->getPost('attach_id');
         $model->deleteFile($attach_id);
-
-        echo ("<script>if (confirm('Data telah terhapus!')) {
-            txt = 'You pressed OK!';");
-        return redirect()->to('/pdf/attachment');
-        echo ("  } else {
-            txt = 'You pressed Cancel!';
-          }</script>");
+        echo ("<script>alert('File has successfully deleted')</script>");
+        return redirect()->to('/pdf/attachment-1');
     }
 
     public function upload()
@@ -93,13 +84,10 @@ class Anotate extends BaseController
 
         $input = $this->validate([
             'berkas' => 'uploaded[berkas]|max_size[berkas, 20000]',
-
-            // 'avatar' => 'uploaded[avatar]|max_size[avatar,1024]',
         ]);
 
         if (!$input) {
             echo ("<script>alert('File tidak sesuai')</script>");
-            // return redirect()->to('/pdf/attachment-1');
         } else {
             $file = $this->request->getFile('berkas');
             $file->move(FCPATH . 'uploads');
@@ -113,14 +101,5 @@ class Anotate extends BaseController
             echo ("<script>alert('File has successfully uploaded')</script>");
             return redirect()->to('/pdf/attachment-1');
         }
-    }
-    function download($name = NULL)
-    {
-        // load download helder
-        $this->load->helper('download');
-
-        // read file contents
-        $data = file_get_contents(base_url('/upload/' . $name));
-        // force_download($name, $data);
     }
 }

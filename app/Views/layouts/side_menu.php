@@ -14,7 +14,7 @@
                 <img src="<?= base_url('adminLTE/dist/img/user1-128x128.jpg') ?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Admin</a>
+                <a href="#" class="d-block"><?= $user; ?></a>
             </div>
         </div>
 

@@ -10,6 +10,7 @@ class AnotateModel extends Model
     public function getAttachment()
     {
         $builder = $this->db->table('user_upload');
+        $builder->select('nama');
         return $builder->get();
     }
 

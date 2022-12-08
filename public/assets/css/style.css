@@ -1,11 +1,16 @@
 #btn {
     background-color: #3F3192;
+    color: #fff !important;
+}
+
+.btn-del {
+    background-color: #a5a4a9;
     color: #fff;
 }
 
 #card-header {
     background-color: #3F3192;
-    color: #fff;
+    color: #fff !important;
 }
 div.dataTables_wrapper {
     margin: 0 auto;
@@ -25,6 +30,7 @@ div.dataTables_wrapper {
     color: white; 
     font-size: small;
     text-align: center;
+    width: fit-content;
 }
 
 body {
