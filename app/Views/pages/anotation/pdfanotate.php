@@ -1,7 +1,4 @@
 <?php
-
-use LDAP\Result;
-
 $db = \Config\Database::connect();
 $query = $db->query('SELECT * FROM attachment, user_upload');
 $rowquery = $query->getResult();
@@ -44,9 +41,13 @@ $rowquery = $query->getResult();
             <div class="card">
                 <div class="card-header">
                     <!-- Tambah attachment -->
-                    <button class="btn" id="btn" data-toggle="modal" data-target="#addModal">
-                        <i class="nav-icon fa fa-plus-square"></i>
+                    <button class="btn btn-outline-success" data-toggle="modal" data-target="#addModal">
+                        <i class="nav-icon fa fa-plus" style="color: green;"></i>
                         Add Attachment
+                    </button>
+                    <button class="btn" id="btn" data-toggle="modal" data-target="">
+                        <i class="nav-icon fa fa-file-archive-o"></i>
+                        Download (ZIP)
                     </button>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -62,9 +63,9 @@ $rowquery = $query->getResult();
                         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header" id="modal-header-add">
                                         <h5 class="modal-title" id="exampleModalLabel">Add Attachment</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #212121;">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -85,8 +86,8 @@ $rowquery = $query->getResult();
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn" id="btn">Save</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="nav-icon fa fa-ban"></i> Close</button>
+                                        <button type="submit" class="btn" id="btn"><i class="nav-icon fa fa-paper-plane"></i> Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -155,13 +156,10 @@ $rowquery = $query->getResult();
                                         <td><?php echo $row->upload_at; ?></td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Button">
-                                                <a class="btn btn-preview" id="btn"><i class="nav-icon fa fa-<?= $iconset; ?>" data-id="<?= $row->attach_id; ?>" data-name="<?= $row->name; ?>"></i></a>
-
-                                                <a href="" class="btn" id="btn"><i class="nav-icon fa fa-download"></i></a>
-                                                <!-- Delete -->
                                                 <a class="btn btn-secondary btn-delete" id="btn-del" data-id="<?= $row->attach_id; ?>"><i class="nav-icon fa fa-trash"></i></a>
+                                                <a href="" class="btn btn-secondary" id="btn"><i class="nav-icon fa fa-download"></i></a>
+                                                <a class="btn btn-preview btn-secondary" id="btn" data-id="<?= $row->attach_id; ?>" data-name="<?= $row->name; ?>"><i class="nav-icon fa fa-<?= $iconset; ?>"></i></a>
                                             </div>
-                                            <!-- Preview -->
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -273,25 +271,27 @@ $rowquery = $query->getResult();
                                         <option value="108">108</option>
                                     </select>
                                 </div>
-                                <!-- <select id="colorselector">
-                                    <option value="106" data-color="#A0522D">sienna</option>
-                                    <option value="47" data-color="#CD5C5C" selected="selected">indianred</option>
-                                    <option value="87" data-color="#FF4500">orangered</option>
-                                    <option value="17" data-color="#008B8B">darkcyan</option>
-                                    <option value="18" data-color="#B8860B">darkgoldenrod</option>
-                                    <option value="68" data-color="#32CD32">limegreen</option>
-                                    <option value="42" data-color="#FFD700">gold</option>
-                                    <option value="77" data-color="#48D1CC">mediumturquoise</option>
-                                    <option value="107" data-color="#87CEEB">skyblue</option>
-                                    <option value="46" data-color="#FF69B4">hotpink</option>
-                                    <option value="47" data-color="#CD5C5C">indianred</option>
-                                    <option value="64" data-color="#87CEFA">lightskyblue</option>
-                                    <option value="13" data-color="#6495ED">cornflowerblue</option>
-                                    <option value="15" data-color="#DC143C">crimson</option>
-                                    <option value="24" data-color="#FF8C00">darkorange</option>
-                                    <option value="78" data-color="#C71585">mediumvioletred</option>
-                                    <option value="123" data-color="#000000">black</option>
-                                </select> -->
+                                <!-- <div class="tool">
+                                    <select class="color-tool" id="colorselector">
+                                        <option class="color-tool" value="123" data-color="#000000" selected="selected">black</option>
+                                        <option class="color-tool active" value="106" data-color="#A0522D" style="background-color: red;">sienna</option>
+                                        <option class="color-tool" value="47" data-color="#CD5C5C">indianred</option>
+                                        <option class="color-tool" value="87" data-color="#FF4500">orangered</option>
+                                        <option class="color-tool" value="17" data-color="#008B8B">darkcyan</option>
+                                        <option class="color-tool" value="18" data-color="#B8860B">darkgoldenrod</option>
+                                        <option class="color-tool" value="68" data-color="#32CD32">limegreen</option>
+                                        <option class="color-tool" value="42" data-color="#FFD700">gold</option>
+                                        <option class="color-tool" value="77" data-color="#48D1CC">mediumturquoise</option>
+                                        <option class="color-tool" value="107" data-color="#87CEEB">skyblue</option>
+                                        <option class="color-tool" value="46" data-color="#FF69B4">hotpink</option>
+                                        <option class="color-tool" value="47" data-color="#CD5C5C">indianred</option>
+                                        <option class="color-tool" value="64" data-color="#87CEFA">lightskyblue</option>
+                                        <option class="color-tool" value="13" data-color="#6495ED">cornflowerblue</option>
+                                        <option class="color-tool" value="15" data-color="#DC143C">crimson</option>
+                                        <option class="color-tool" value="24" data-color="#FF8C00">darkorange</option>
+                                        <option class="color-tool" value="78" data-color="#C71585">mediumvioletred</option>
+                                    </select>
+                                </div> -->
                                 <div class="tool">
                                     <button class="color-tool active" style="background-color: #212121;"></button>
                                     <button class="color-tool" style="background-color: red;"></button>
@@ -327,7 +327,7 @@ $rowquery = $query->getResult();
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="attach_id" class="attachID">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban"></i> Close</button>
                     <button class="btn" id="btn" onclick="clearPage()">Clear Page</button>
                     <button class="btn" id="btn" onclick="showPdfData()"><i class="fa fa-download"></i> JSON Data</button>
                     <button type="submit" class="btn" id="btn" onclick="savePDF()"><i class="fa fa-save"></i> Save</button>
@@ -336,6 +336,3 @@ $rowquery = $query->getResult();
         </div>
     </div>
 </div>
-<!-- <script type="text/javascript">
-    
-</script> -->

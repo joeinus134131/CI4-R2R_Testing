@@ -151,7 +151,6 @@ $query = $db->query('SELECT * FROM attachment');
                                                 <!-- Preview Anotasi -->
                                                 <a href="" class="btn" id="btn" data-toggle="modal" data-target="#anotateModal"><i class="nav-icon fa fa-<?= $iconset; ?>"></i></a>
                                                 <a href="" class="btn" id="btn"><i class="nav-icon fa fa-download"></i></a>
-                                                <!-- Delete -->
                                                 <a href="" data-toggle="modal" data-target="#deleteModal" class="btn" id="btn"><i class="nav-icon fa fa-trash"></i></a>
                                             </td>
                                         </tr>

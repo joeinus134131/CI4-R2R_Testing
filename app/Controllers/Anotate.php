@@ -35,7 +35,7 @@ class Anotate extends BaseController
             'title' => 'Anotate',
             'user' => 'Admin',
             'iconsave' => 'fa fa-pencil-square-o',
-            'iconset' => 'pencil-alt',
+            'iconset' => 'edit',
             'icondel' => 'fa fa-trash',
             'iconadd' => 'fa fa-plus-square',
             'user_upload'  => $username,
@@ -88,6 +88,7 @@ class Anotate extends BaseController
 
         if (!$input) {
             echo ("<script>alert('File tidak sesuai')</script>");
+            return redirect()->to('/pdf/attachment-1');
         } else {
             $file = $this->request->getFile('berkas');
             $file->move(FCPATH . 'uploads');

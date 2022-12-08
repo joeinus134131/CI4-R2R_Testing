@@ -1,16 +1,21 @@
-var filename = 'anotasi.pdf';
+// $(".btn-preview").on("click", function(){
 
-var fileUrl= "/uploads/" + filename;
+// });
+var filenameku = $(".btn-preview").data("name");
+var id = $(".btn-preview").data("id");
+console.log(filenameku, id);
+
+var fileUrl= "/uploads/" + filenameku;
 var pdf = new PDFAnnotate("pdf-container", fileUrl, {
-  onPageUpdated(page, oldData, newData) {
-    console.log(page, oldData, newData);
-  },
-  ready() {
-    console.log("Plugin initialized successfully");
-  },
-  scale: 1.25,
-  pageImageCompression: "FAST", // FAST, MEDIUM, SLOW(Helps to control the new PDF file size)
-});
+    onPageUpdated(page, oldData, newData) {
+        console.log(page, oldData, newData);
+    },
+    ready() {
+        console.log("Plugin initialized successfully");
+    },
+    scale: 1.25,
+    pageImageCompression: "FAST", // FAST, MEDIUM, SLOW(Helps to control the new PDF file size)
+    });
 
 function changeActiveTool(event) {
     var element = $(event.target).hasClass("tool-button")

@@ -3,6 +3,10 @@
     color: #fff !important;
 }
 
+.nav-icon {
+    color: #ffffff;
+}
+
 .btn-del {
     background-color: #a5a4a9;
     color: #fff;
@@ -16,9 +20,14 @@ div.dataTables_wrapper {
     margin: 0 auto;
 }
 
+#modal-header-add {
+    background-color: #ffcc00;
+    color: rgb(0, 0, 0);
+}
+
 .modal-header {
     background-color: #3F3192;
-    color: #fff;
+    color: #fff ;
 }
 
 .close {
