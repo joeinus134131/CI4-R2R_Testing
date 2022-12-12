@@ -68,6 +68,7 @@
 <script src="<?= base_url('assets/pdfanotate/script.js') ?>"></script>
 <script src="<?= base_url('assets/color-selector/js/bootstrap-colorselector.js') ?>"></script>
 <script src="<?= base_url('assets/google-code-prettify/prettify.js') ?>"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Page specific script -->
 <script type="text/javascript">

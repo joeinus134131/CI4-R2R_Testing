@@ -10,6 +10,7 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 	this.fabricObjects = [];
 	this.fabricObjectsData = [];
 	this.color = '#212121';
+	this.backgroundColor = 'yellow';
 	this.borderColor = '#000000';
 	this.borderSize = 1;
 	this.font_size = 16;
@@ -97,6 +98,7 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 	            top: event.clientY - fabricObj.upperCanvasEl.getBoundingClientRect().top,
 	            fill: inst.color,
 	            fontSize: inst.font_size,
+				backgroundColor: inst.backgroundColor,
 	            selectable: true
 	        });
 	        fabricObj.add(text);

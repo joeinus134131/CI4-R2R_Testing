@@ -1,6 +1,3 @@
-// $(".btn-preview").on("click", function(){
-
-// });
 var filenameku = $(".btn-preview").data("name");
 var id = $(".btn-preview").data("id");
 console.log(filenameku, id);
@@ -68,8 +65,24 @@ function deleteSelectedObject(event) {
 }
 
 function savePDF() {
-    $pdf = pdf.savePdf('Anotasi.pdf');
-    $('#succesModal').modal('show');
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Your data will be saved!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, saved it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Success',
+            'Successfully add data.',
+            'success'
+          )
+        }
+        $pdf = pdf.savePdf(filenameku);
+    })
 }
 
 function clearPage() {
@@ -84,12 +97,20 @@ function showPdfData() {
 }
 
 $(function () {
-    $('.color-tool').click(function () {
-        $('.color-tool.active').removeClass('active');
-        $(this).addClass('active');
-        color = $(this).get(0).style.backgroundColor;
+    // $('.color-tool').click(function () {
+    //     $('.color-tool.active').removeClass('active');
+    //     $(this).addClass('active');
+    //     color = $(this).get(0).style.backgroundColor;
+    //     console.log(color);
+    //     pdf.setColor(color);
+    // });
+
+    $('#colorselector').change(function () {
+        var color = $(this).val()
+        console.log(color);
         pdf.setColor(color);
     });
+    
 
     $('#brush-size').change(function () {
         var width = $(this).val();

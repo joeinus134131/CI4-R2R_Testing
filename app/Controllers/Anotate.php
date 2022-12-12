@@ -71,7 +71,13 @@ class Anotate extends BaseController
         $model = new AnotateModel();
         $attach_id = $this->request->getPost('attach_id');
         $model->deleteFile($attach_id);
-        echo ("<script>alert('File has successfully deleted')</script>");
+        echo ("<script>Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been delete',
+            showConfirmButton: false,
+            timer: 1500
+        })</script>");
         return redirect()->to('/pdf/attachment-1');
     }
 
@@ -99,7 +105,14 @@ class Anotate extends BaseController
                 'note' => $this->request->getPost('note'),
             ];
             $save = $db->insert($data);
-            echo ("<script>alert('File has successfully uploaded')</script>");
+            echo ("<script>Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              })</script>");
+
             return redirect()->to('/pdf/attachment-1');
         }
     }
