@@ -166,7 +166,7 @@ $rowquery = $query->getResult();
                                             <div class="btn-group" role="group" aria-label="Button">
                                                 <a class="btn btn-secondary btn-delete" id="btn-del" data-id="<?= $row->attach_id; ?>"><i class="nav-icon fa fa-trash"></i></a>
                                                 <a href="" class="btn btn-secondary" id="btn"><i class="nav-icon fa fa-download"></i></a>
-                                                <a class="btn btn-preview btn-secondary" id="btn" data-id="<?= $row->attach_id; ?>" data-name="<?= $row->name; ?>"><i class="nav-icon fa fa-<?= $iconset; ?>"></i></a>
+                                                <a class="btn btn-preview btn-secondary" id="btn btn-anotasi" data-id="<?= $row->attach_id; ?>" data-name="<?= $row->name; ?>"><i class="nav-icon fa fa-<?= $iconset; ?>"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -235,7 +235,7 @@ $rowquery = $query->getResult();
     <!-- /.content -->
 
     <!-- PDF View Modal -->
-    <div class="modal fade bd-example-modal-lg" id="anotateModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" id="anotateModal" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
