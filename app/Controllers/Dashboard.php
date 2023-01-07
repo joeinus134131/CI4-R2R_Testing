@@ -6,20 +6,27 @@ class Dashboard extends BaseController
 {
     public function index()
     {
+        $db = \Config\Database::connect();
+        $query = $db->query('SELECT * FROM interco');
+        $sum_query = $db->query('SELECT COUNT(*) FROM interco');
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard Company Performance',
+            'user' => 'Admin',
+            'sum_company' => '10'
         ];
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
         echo view('layouts/side_menu');
-        echo view('dashboard');
+        echo view('dashboard/dashboard', $data);
         echo view('layouts/footer');
+        echo view('dashboard/js');
     }
 
     public function kontak()
     {
         $data = [
-            'title' => 'Kontak'
+            'title' => 'Kontak',
+            'user' => 'Admin',
         ];
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
@@ -30,7 +37,8 @@ class Dashboard extends BaseController
     public function calender()
     {
         $data = [
-            'title' => 'Kalender'
+            'title' => 'Kalender',
+            'user' => 'Admin',
         ];
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');

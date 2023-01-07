@@ -9,21 +9,24 @@ class Anotate extends BaseController
     public function Attachment()
     {
         $model = new AnotateModel();
-        foreach ($model->getAttachment()->getResult() as $row) {
-            $data = [
-                'title' => 'Attachment',
-                'iconset' => 'pencil-alt',
-                'icondel' => 'fa fa-trash',
-                'iconadd' => 'fa fa-plus-square',
-                'nama'  => $row->nama,
-                'attachment' => $model->getFile()->getResult(),
-            ];
-        }
+        $model = new AnotateModel();
+        $id = $this->request->getVar('attach_id');
+        $username = $model->getAttachment()->getResult();
+        $data = [
+            'title' => 'Anotate',
+            'user' => 'Admin',
+            'iconsave' => 'fa fa-pencil-square-o',
+            'iconset' => 'edit',
+            'icondel' => 'fa fa-trash',
+            'iconadd' => 'fa fa-plus-square',
+            'user_upload'  => $username,
+            'attachment' => $model->getFile()->getResult(),
+        ];
 
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
         echo view('layouts/side_menu');
-        echo view('pages/anotation/attachment', $data);
+        echo view('/anotation/attachment', $data);
         echo view('layouts/footer');
     }
     public function anotated()
@@ -44,7 +47,7 @@ class Anotate extends BaseController
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
         echo view('layouts/side_menu');
-        echo view('pages/anotation/pdfanotate', $data);
+        echo view('/anotation/pdfanotate', $data);
         echo view('layouts/footer');
     }
 

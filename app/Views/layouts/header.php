@@ -35,14 +35,9 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <div class="preloader">
-        <div class="loading">
-            <img src="<?= base_url('adminlte/dist/img/loading.gif') ?>" width="88">
-            <div>
-                <p>Harap Tunggu...</p>
-            </div>
-        </div>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__wobble" src="<?= base_url('adminlte/dist/img/loading.gif') ?>" alt="loading_process" height="60" width="60">
     </div>
     <!-- Site wrapper -->
     <div class="wrapper">

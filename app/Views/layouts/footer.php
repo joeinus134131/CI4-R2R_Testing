@@ -9,7 +9,6 @@
 <aside class="control-sidebar control-sidebar-dark"></aside>
 <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 <!-- PSPDKIT -->
 <script src="<?= base_url('assets/dist/pspdfkit.js') ?>"></script>
 
@@ -51,18 +50,8 @@
 <!-- AdminLTE App -->
 <script src="<?= base_url('adminLTE/dist/js/adminlte.min.js') ?>"></script>
 <script src="<?= base_url('adminLTE/plugins/bs-stepper/js/bs-stepper.min.js') ?>"></script>
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
-<script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.3.0/fabric.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -70,7 +59,6 @@
 <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';
 </script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.3.0/fabric.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>
@@ -82,60 +70,6 @@
 <script src="<?= base_url('assets/color-selector/js/bootstrap-colorselector.js') ?>"></script>
 <script src="<?= base_url('assets/google-code-prettify/prettify.js') ?>"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- Page specific script -->
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-36251023-1']);
-    _gaq.push(['_setDomainName', 'jqueryscript.net']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
-    $('.btn-preview').on('click', function() {
-        // get data from button edit
-        const attach_id = $(this).data('id');
-        const name = $(this).data('name');
-
-
-        // Set data
-        $('.attach_id').val(attach_id);
-        $('.product_name').val(name);
-
-
-        // Call Modal anotasi
-        $('#anotateModal').modal('show');
-    });
-
-    $('.btn-delete').on('click', function() {
-        // get data from button edit
-        const id = $(this).data('id');
-
-        // Set data to Form Edit
-        $('.attachID').val(id);
-
-        // panggil model delete
-        $('#deleteModal').modal('show');
-    });
-
-    $('#colorselector').colorselector();
-
-    // $("#example1").DataTable({
-    //     "paging": true,
-    //     "responsive": true,
-    //     "lengthChange": true,
-    //     "autoWidth": true,
-    //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-    //     scrollY: 400,
-    //     scrollX: true,
-    // }).buttons().container().appendTo('#example_wrapper .col-md-12:eq(0)');
-</script>
 </body>
 
 </html>

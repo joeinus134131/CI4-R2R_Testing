@@ -91,7 +91,8 @@ $query = $db->query('SELECT * FROM attachment');
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="myLargeModalLabel">PDF Anotation</h5>
+                                        <h5 class="modal-title" id="myLargeModalLabel">
+                                        </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden=" true">&times;</span>
                                         </button>
@@ -203,6 +204,8 @@ $query = $db->query('SELECT * FROM attachment');
 <script src="<?= base_url('assets/dist/pspdfkit.js') ?>" type="text/javascript"></script>
 
 <script type="text/javascript">
+    var filename = "databaru.pdf";
+    document.getElementById("myLargeModalLabel").innerHTML = "PDF Annotation - " + filename;
     PSPDFKit.load({
             container: "#pspdfkit",
             document: "<?= base_url() . "/uploads/anotasi-edited.pdf"; ?>",
