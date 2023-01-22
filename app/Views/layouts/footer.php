@@ -46,6 +46,7 @@
 
 <!-- AdminLTE Calender -->
 <script src="<?= base_url('adminLTE/plugins/fullcalendar/main.js') ?>"></script>
+<script src="<?= base_url('adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.css') ?>"></script>
 
 <!-- AdminLTE App -->
 <script src="<?= base_url('adminLTE/dist/js/adminlte.min.js') ?>"></script>

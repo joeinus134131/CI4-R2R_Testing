@@ -3,25 +3,18 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
- 
+
 class DashboardModel extends Model
 {
-    protected $table      = 'intercom';
-    protected $primaryKey = 'id';
+    protected $table = 'users';
+    protected $primary_key = "user_id";
+    protected $allowedFields = ['user_name', 'user_email', 'user_password', 'user_created_at'];
 
-    protected $useAutoIncrement = true;
-
-    protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
-
-    protected $allowedFields = ['flow_name', 'status'];
-
-    protected $useTimestamps = false;
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
-
-    protected $validationRules    = [];
-    protected $validationMessages = [];
-    protected $skipValidation     = false;
+    public function getVar($var)
+    {
+        $session = session();
+        $email = $session->get('email');
+        $query = $this->where('user_email', $email)->first();
+        return $query[$var];
+    }
 }

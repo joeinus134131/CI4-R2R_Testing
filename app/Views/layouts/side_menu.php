@@ -14,7 +14,7 @@
                 <img src="<?= base_url('adminLTE/dist/img/user1-128x128.jpg') ?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= $user; ?></a>
+                <a href="#" class="d-block">Admin</a>
             </div>
         </div>
 
@@ -88,42 +88,6 @@
                         </li>
                     </ul>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-ellipsis-h"></i>
-                        <p>
-                            Process Monitoring
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Proposal Requesting</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Proposal Approved</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>On Line Progress</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/pdf/anotate" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>PDF Anotation</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> -->
 
                 <!-- Finance Section -->
                 <li class="nav-item">
@@ -138,7 +102,7 @@
                         <li class="nav-item">
                             <a href="/consol/jurnal" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Report</p>
+                                <p>Upload Trial Balance</p>
                             </a>
                         </li>
                         <li class="nav-item">

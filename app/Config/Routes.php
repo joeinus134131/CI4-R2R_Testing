@@ -43,7 +43,7 @@ $routes->get('/logout', 'Login::logout');
 $routes->get('/plugin/rules', 'Configplugin::rules');
 $routes->get('/plugin/aidecision', 'Configplugin::aidecision');
 $routes->get('/delete', 'Dashboard::delete');
-$routes->get('/consol/jurnal', 'Consolidation::consol');
+$routes->get('/consol/jurnal', 'Consolidation::consolidation');
 $routes->get('/calender', 'Dashboard::calender');
 $routes->get('/performance/company', 'Performance::company');
 $routes->get('/performance/agent', 'Performance::agent');

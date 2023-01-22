@@ -1,12 +1,9 @@
 <?php
 $db = \Config\Database::connect();
 $query = $db->query('SELECT * FROM attachment');
-// $result = $query->getResult();
-// echo ($result);
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -20,10 +17,9 @@ $query = $db->query('SELECT * FROM attachment');
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 
-    <!-- /.card -->
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -86,7 +82,6 @@ $query = $db->query('SELECT * FROM attachment');
                         <!-- End attachment added -->
 
                         <!-- Anotasi modal -->
-                        <!-- <form action="/pdf/attachment/save" method="post"> -->
                         <div class="modal fade bd-example-modal-lg" id="anotateModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
@@ -111,7 +106,6 @@ $query = $db->query('SELECT * FROM attachment');
                                 </div>
                             </div>
                         </div>
-                        <!-- </form> -->
                         <!-- End Anotasi -->
 
                         <!-- Data Table -->
@@ -190,122 +184,7 @@ $query = $db->query('SELECT * FROM attachment');
                         </div>
                     </div>
                     <!-- <a type="button" id="btn" class="btn btn-save" onclick="download()"><i class="nav-icon fa fa-save"></i> save</a> -->
-                    <!-- /.card -->
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-
-<script src="<?= base_url('assets/dist/pspdfkit.js') ?>" type="text/javascript"></script>
-
-<script type="text/javascript">
-    var filename = "databaru.pdf";
-    document.getElementById("myLargeModalLabel").innerHTML = "PDF Annotation - " + filename;
-    PSPDFKit.load({
-            container: "#pspdfkit",
-            document: "<?= base_url() . "/uploads/anotasi-edited.pdf"; ?>",
-        })
-        .then(function(instance) {
-            console.log("PSPDFKit loaded", instance);
-            // const arrayBuffer = await instance.exportPDF();
-            // const blob = new Blob([arrayBuffer], {
-            //     type: 'application/pdf'
-            // });
-
-            const defaultItems = PSPDFKit.defaultToolbarItems;
-            console.log(defaultItems);
-            const items = instance.toolbarItems;
-
-            // menghilangkan tombol export pdf
-            instance.setToolbarItems(items.filter((item) => item.type !== "export-pdf", "print"));
-
-            instance.exportPDF().then(function(buffer) {
-                const supportsDownloadAttribute = HTMLAnchorElement.prototype.hasOwnProperty(
-                    "download"
-                );
-                const blob = new Blob([buffer], {
-                    type: "application/pdf"
-                });
-                if (navigator.msSaveOrOpenBlob) {
-                    navigator.msSaveOrOpenBlob(blob, "Anotation.pdf");
-                } else {
-                    const objectUrl = window.URL.createObjectURL(blob);
-                    const exportButton = document.getElementById('export');
-                    exportButton.addEventListener('click', () => {
-                        downloadPdf(objectUrl);
-                    });
-                    // downloadPdf(objectUrl);
-                    window.URL.revokeObjectURL(objectUrl);
-                }
-            });
-
-            // const downloadButton = {
-            //     type: "custom",
-            //     id: "download-pdf",
-            //     icon: "/download.svg",
-            //     title: "Download",
-            //     onPress: () => {
-            //         pspdfkitInstance.exportPDF().then((buffer) => {
-            //             const blob = new Blob([buffer], {
-            //                 type: "application/pdf"
-            //             });
-            //             const fileName = "document.pdf";
-            //             if (window.navigator.msSaveOrOpenBlob) {
-            //                 window.navigator.msSaveOrOpenBlob(blob, fileName);
-            //             } else {
-            //                 const objectUrl = window.URL.createObjectURL(blob);
-            //                 const a = document.createElement("a");
-            //                 a.href = objectUrl;
-            //                 a.style = "display: none";
-            //                 a.download = fileName;
-            //                 document.body.appendChild(a);
-            //                 a.click();
-            //                 window.URL.revokeObjectURL(objectUrl);
-            //                 document.body.removeChild(a);
-            //             }
-            //         });
-            //     }
-            // };
-            // toolbarItems: PSPDFKit.defaultToolbarItems.concat([downloadButton])
-        })
-        .catch(function(error) {
-            console.error(error.message);
-        });
-
-
-    function downloadPdf(objectUrl) {
-        const a = document.createElement("a");
-        a.href = objectUrl;
-        a.style.display = "none";
-        a.download = "Anotation.pdf";
-        a.setAttribute("download", "anotation.pdf");
-        document.body.appendChild(a);
-        a.dispatchEvent(
-            new MouseEvent('click', {
-                bubbles: true,
-                cancelable: true,
-                view: window
-            })
-        );
-        document.body.removeChild(a);
-        alert("File Downloaded");
-    }
-
-
-    // async function saveServer(blob){
-    //     const formData = new FormData();
-    //     formData.append("file", blob);
-    //     console.log(formData);
-    //     await fetch("/pdf/attachment/upload", {
-    //         method: "POST",
-    //         body: formData
-    //     });
-    //     alert("File saved!");
-    //     console.log("File saved!");
-    // }
-</script>

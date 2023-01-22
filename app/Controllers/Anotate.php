@@ -9,7 +9,6 @@ class Anotate extends BaseController
     public function Attachment()
     {
         $model = new AnotateModel();
-        $model = new AnotateModel();
         $id = $this->request->getVar('attach_id');
         $username = $model->getAttachment()->getResult();
         $data = [
@@ -26,8 +25,9 @@ class Anotate extends BaseController
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
         echo view('layouts/side_menu');
-        echo view('/anotation/attachment', $data);
+        echo view('/annotation/attachment', $data);
         echo view('layouts/footer');
+        echo view('/annotation/js');
     }
     public function anotated()
     {
@@ -47,8 +47,9 @@ class Anotate extends BaseController
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
         echo view('layouts/side_menu');
-        echo view('/anotation/pdfanotate', $data);
+        echo view('/annotation/pdfanotate', $data);
         echo view('layouts/footer');
+        echo view('/annotation/js');
     }
 
     public function save()

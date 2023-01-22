@@ -2,21 +2,27 @@
 
 namespace App\Controllers;
 
+use App\Models\DashboardModel;
+
 class Dashboard extends BaseController
 {
+    protected $request;
     public function index()
     {
-        $db = \Config\Database::connect();
-        $query = $db->query('SELECT * FROM interco');
-        $sum_query = $db->query('SELECT COUNT(*) FROM interco');
+        $session = session();
+        $model = new DashboardModel();
+        $email = $model->getVar('email');
+        $query = $model->where('user_email', $email)->first();
         $data = [
             'title' => 'Dashboard Company Performance',
             'user' => 'Admin',
+            'user_name'     => $query['user_name'],
+            'user_email'    => $query['user_email'],
             'sum_company' => '10'
         ];
         echo view('layouts/header', $data);
         echo view('layouts/top_menu');
-        echo view('layouts/side_menu');
+        echo view('layouts/side_menu', $data);
         echo view('dashboard/dashboard', $data);
         echo view('layouts/footer');
         echo view('dashboard/js');
