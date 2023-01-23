@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DashboardModel extends Model
+class ConsolidationModel extends Model
 {
     protected $table = 'users';
     protected $primarykey = "user_id";

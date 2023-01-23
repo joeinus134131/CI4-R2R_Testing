@@ -1,3 +1,16 @@
+canvas, .canvas-container {
+    margin-bottom: 25px;
+}
+
+.canvas-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ungu {
+    background-color: #3F3192;
+    color: #fff !important;
+}
 #btn {
     background-color: #3F3192;
     color: #fff !important;
@@ -6,14 +19,6 @@
 .nav-tabmenu {
     background-color: #3F3192;
     color: #fff !important;
-}
-
-.main-header {
-    left: 0;
-    position: relative;
-    right: 0;
-    top: 0;
-    z-index: 1037;
 }
 
 .card-header a{

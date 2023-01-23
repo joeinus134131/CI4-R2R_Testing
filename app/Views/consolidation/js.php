@@ -42,4 +42,23 @@
             }
         })
     });
+
+    var dataTable = [];
+    for (var i = 0; i < data.length; i++) {
+        dataTable.push([data[i]['col1'], data[i]['col2'], data[i]['col3']]);
+    }
+
+    $('#trial_balance_table').DataTable({
+        data: dataTabble,
+        columns: [{
+                title: "namaperusahaan"
+            },
+            {
+                title: "kodeaccount"
+            },
+            {
+                title: "namaaccount"
+            },
+        ]
+    });
 </script>

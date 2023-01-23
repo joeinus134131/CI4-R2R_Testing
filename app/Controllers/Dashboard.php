@@ -11,13 +11,10 @@ class Dashboard extends BaseController
     {
         $session = session();
         $model = new DashboardModel();
-        $email = $model->getVar('email');
-        $query = $model->where('user_email', $email)->first();
         $data = [
             'title' => 'Dashboard Company Performance',
             'user' => 'Admin',
-            'user_name'     => $query['user_name'],
-            'user_email'    => $query['user_email'],
+            'user_name'     => $model->getUserName(),
             'sum_company' => '10'
         ];
         echo view('layouts/header', $data);

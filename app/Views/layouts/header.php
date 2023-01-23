@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="<?= base_url('adminLTE/plugins/fontawesome-free/css/all.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('adminLTE/plugins/bs-stepper/css/bs-stepper.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/color-selector/css/bootstrap-colorselector.css') ?>">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/pdfanotate/pdfannotate.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/pdfanotate/css/pdfannotate.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 
@@ -39,5 +39,4 @@
     <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__wobble" src="<?= base_url('adminlte/dist/img/loading.gif') ?>" alt="loading_process" height="60" width="60">
     </div>
-    <!-- Site wrapper -->
     <div class="wrapper">

@@ -65,9 +65,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
-<script src="<?= base_url('assets/pdfanotate/arrow.fabric.js') ?>"></script>
-<script src="<?= base_url('assets/pdfanotate/pdfannotate.js') ?>"></script>
-<script src="<?= base_url('assets/pdfanotate/script.js') ?>"></script>
+<script src="<?= base_url('assets/pdfanotate/js/arrow.fabric.js') ?>"></script>
+<script src="<?= base_url('assets/pdfanotate/js/pdfannotate.js') ?>"></script>
+<script src="<?= base_url('assets/pdfanotate/js/script.js') ?>"></script>
 <script src="<?= base_url('assets/color-selector/js/bootstrap-colorselector.js') ?>"></script>
 <script src="<?= base_url('assets/google-code-prettify/prettify.js') ?>"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
