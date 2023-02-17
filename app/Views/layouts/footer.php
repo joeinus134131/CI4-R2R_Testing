@@ -46,7 +46,6 @@
 
 <!-- AdminLTE Calender -->
 <script src="<?= base_url('adminLTE/plugins/fullcalendar/main.js') ?>"></script>
-<script src="<?= base_url('adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.css') ?>"></script>
 
 <!-- AdminLTE App -->
 <script src="<?= base_url('adminLTE/dist/js/adminlte.min.js') ?>"></script>
@@ -54,6 +53,9 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
@@ -67,10 +69,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
 <script src="<?= base_url('assets/pdfanotate/js/arrow.fabric.js') ?>"></script>
 <script src="<?= base_url('assets/pdfanotate/js/pdfannotate.js') ?>"></script>
-<script src="<?= base_url('assets/pdfanotate/js/script.js') ?>"></script>
 <script src="<?= base_url('assets/color-selector/js/bootstrap-colorselector.js') ?>"></script>
 <script src="<?= base_url('assets/google-code-prettify/prettify.js') ?>"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.full.min.js"></script>
 </body>
 
 </html>

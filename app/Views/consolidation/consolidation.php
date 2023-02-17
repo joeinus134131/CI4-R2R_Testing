@@ -19,7 +19,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <div class="card">
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo base_url('excelImport/import'); ?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <button type="button" class="btn btn-block btn-warning btn-md" onclick="window.history.go(-1); return false;"><i class="fas fa-backward"></i> Back</button>
@@ -77,12 +77,41 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text fa fa-terminal" id="basic-addon1"></span>
                                             </div>
-                                            <input type="file" class="form-control" name="berkas" />
+                                            <input type="file" id="fileInput" class="form-control" name="berkas" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                        <!-- <button>
+                            <a class="btn ungu btn-block btn-success btn-md" onclick="showdatatable()"><i class="fas fa-eye"></i> Tampilkan</a>
+                        </button>
+                        <button>
+                            <a class="btn ungu btn-block btn-primary btn-md" onclick="hidedatatable()"><i class="fas fa-eye"></i> Sembunyikan</a>
+                        </button>
+                        <button>
+                            <a class="btn ungu btn-block btn-primary btn-md" onclick="addClass_tr()"><i class="fas fa-plus"></i> Tambah Kelas</a>
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content datatable-view" style="display: none;">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header ungu float-center mt-3">
+                            <h3 class="card-title"><i class="fa fa-map"></i> Mapping Master Data Trial Balance</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="trial_balance_table">
+                                <table id="consolidation-table" class="table table-bordered table-striped">
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,37 +120,63 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <nav class="nav-tabmenu">
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Refer Documents</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Attachments</a>
-                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Import Master Data</a>
-                                </div>
-                            </nav>
-                            <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                        <div class="content">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h3 class="card-title
-                                                ">
-                                                        Data
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
-                                </div>
-                            </div>
+            <div class="card card-primary card-outline-tabs">
+                <div class="card-header p-0 border-bottom-0">
+                    <ul class="nav nav-tabs" role="tablist" id="nav-tabs-attachments">
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#attachments"><i class="fas fa-file-alt"></i> Attachments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#referdocument"><i class="fas fa-file-alt"></i> Refer Documents</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#referdocument"><i class="fas fa-file-alt"></i> Refer Documents</a>
+                        </li> -->
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div id="attachments" class="container tab-pane"><br>
+                        <button type="button" class="btn btn-outline-info btn-md" data-toggle="modal" data-target="#modal_attachment" id="btn-add-attachment"><i class="fas fa-plus"></i> Add Attachment</button>
+                        <p>
+                        <div class="table-responsive">
+                            <table id="attachments_draft_list" class="table table-bordered table-striped table-hover nowrap datatable">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th width="5%">No</th>
+                                        <th width="10%">Jenis Document</th>
+                                        <th width="20%">Name</th>
+                                        <th width="10%">Name Nodes</th>
+                                        <th width="10%">Size</th>
+                                        <th width="10%">Attachment ID</th>
+                                        <th width="10%">Version Document</th>
+                                        <th width="10%">Note</th>
+                                        <th width="10%">Upload By</th>
+                                        <th width="10%">Upload At</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
+                        </p>
                     </div>
+                    <!-- <div id="referdocument" class="container tab-pane">
+                        <br />
+                        <table id="doc_referdocument" class="table table-striped table-hover" style="cursor:pointer;">
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                        <table id="list_doc_referdocument" class="table table-striped table-hover" style="cursor:pointer;">
+                            <thead class="thead-dark" style="text-align:center;">
+                                <tr>
+                                    <th>List Attacment</th>
+                                    <th>Download</th>
+                                    <th>Check</th>
+                                </tr>
+                        </table>
+                    </div> -->
                 </div>
             </div>
     </section>
