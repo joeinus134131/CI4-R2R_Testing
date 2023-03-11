@@ -50,6 +50,7 @@ $routes->get('/performance/company', 'Performance::company');
 $routes->get('/performance/agent', 'Performance::agent');
 $routes->get('/pdf/attachment-1', 'Anotate::anotated');
 $routes->get('/pdf/attachment-2', 'Anotate::Attachment');
+$routes->get('/pdfviewer/compare_view', 'PdfViewer::compare_view');
 $routes->match(['get', 'post'], '/api/cekongkir', 'CekOngkir::cek');
 $routes->match(['get', 'post'], '/pdf/attachment/delete', 'Anotate::delete');
 $routes->match(['get', 'post'], '/pdf/attachment/save', 'Anotate::save');
